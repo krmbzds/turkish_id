@@ -4,25 +4,22 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'turkish_id/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "turkish_id"
+  spec.name          = 'turkish_id'
   spec.version       = TurkishId::VERSION
-  spec.authors       = ["Kerem Bozdas"]
-  spec.email         = ["krmbzds.github@gmail.com"]
+  spec.authors       = ['Kerem Bozdas']
+  spec.email         = ['krmbzds.github@gmail.com']
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+  spec.summary       = 'Validate Turkish Identification Numbers'
+  spec.description   = 'Validate Turkish Identification Numbers'
+  spec.homepage      = 'https://github.com/krmbzds/turkish_id'
+  spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.bindir        = 'bin'
+  spec.executables   = ['turkish_id']
+  spec.require_paths = ['lib', 'lib/turkish_id']
 
-  spec.add_development_dependency "bundler", "~> 1.8"
+  spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec"
 end
