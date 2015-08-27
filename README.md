@@ -7,7 +7,7 @@ This gem provides methods to validate Turkish Identification Numbers.
 
 Add this line to your application's Gemfile:
 
-```ruby
+```rb
 gem 'turkish_id'
 ```
 
@@ -22,15 +22,26 @@ Or install it yourself as:
 ## Usage
 
 Create a new instance:
+
 ```rb
 identity_number = TurkishId.new('10000000146')
 ```
+
 Use ```is_valid?``` method to check validity:
 
 ```rb
 identity_number.is_valid?
 => true
 ```
+
+Or use the command line executable:
+
+```sh
+$ turkish_id
+Enter your 11 digit id number to validate: 10000000146
+Your identification number is valid.
+```
+
 
 ## Anatomy of the Turkish ID Number
 
