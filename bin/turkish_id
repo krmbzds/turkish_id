@@ -6,13 +6,31 @@ $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
 
 require 'turkish_id'
 
-print "Enter your 11 digit id number to validate: "
+@help = '
+  Usage
+    turkish_id QUERY
 
-begin
-  identity_number = TurkishId.new(gets.chomp)
-  valid = identity_number.is_valid?
-rescue
-  puts "Your identification number is invalid."
+  Examples
+    turkish_id 10000000078
+    turkish_id 10000000146
+
+'
+
+def parse_input
+  ARGV[0] ? validate_id(ARGV[0]) : print_help
 end
 
-puts "Your identification number is valid." if valid
+def validate_id(id_number)
+  identity_number = TurkishId.new(id_number)
+  print_result(identity_number.is_valid?)
+end
+
+def print_result(result)
+  STDOUT.puts "Your identification number is #{ result ? 'valid' : 'invalid' }."
+end
+
+def print_help
+  STDOUT.puts @help
+end
+
+parse_input

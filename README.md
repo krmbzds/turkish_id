@@ -37,11 +37,9 @@ identity_number.is_valid?
 Or use the command line executable:
 
 ```sh
-$ turkish_id
-Enter your 11 digit id number to validate: 10000000146
+$ turkish_id 10000000078
 Your identification number is valid.
 ```
-
 
 ## Anatomy of the Turkish ID Number
 
