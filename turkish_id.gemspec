@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Kerem Bozdas']
   spec.email         = ['krmbzds.github@gmail.com']
 
-  spec.summary       = 'Validate Turkish Identification Numbers'
-  spec.description   = 'Validate Turkish Identification Numbers'
+  spec.summary       = 'Validate Turkish Identification Numbers and More!'
+  spec.description   = 'Validate Turkish Identification Numbers and More!'
   spec.homepage      = 'https://github.com/krmbzds/turkish_id'
   spec.license       = 'MIT'
 
@@ -19,7 +19,8 @@ Gem::Specification.new do |spec|
   spec.executables   = ['turkish_id']
   spec.require_paths = ['lib', 'lib/turkish_id']
 
-  spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency 'bundler', '~> 1.10'
+  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'pry', '~> 0.10.3'
 end
