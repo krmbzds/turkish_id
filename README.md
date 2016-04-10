@@ -41,6 +41,13 @@ $ turkish_id 10000000078
 Your identification number is valid.
 ```
 
+Use ```get_relatives``` method to check relatives:
+
+```rb
+identity_number.get_relatives(3)
+=> ["10003000082", "10005999902", "10008999848"]
+```
+
 ## Anatomy of the Turkish ID Number
 
 The Turkish Identification Number consists of ```11``` digits.
