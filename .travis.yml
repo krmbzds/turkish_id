@@ -9,4 +9,6 @@ before_install:
   - gem install bundler
 addons:
   code_climate:
-    repo_token: ae61bac6e33448d6990e3f36d9f16dbabfcae03d279e2b2226108f39a0212a59
+    repo_token:
+      secure: YZdJdInlylfiI0/9wEa+nkDovPAa0ZAoI+DU1MoGNUK1pEkDRi3iTTgmjpRa1bSdwCS9nRg2cmZ+la8HlOPlUnhFSx2e4MOhDIxQkvPjf6H3y+Vg/LD5R6H0G/hPJB/8ylHp4lGB4AP0ADqCWhU4fzk1Q0c+xWfcuCXdN4z1kQTkCueS6nw/qscIWNtZF6hHyeC1sS2vTT3Bm+trs8v0Rjw/oYNrlWtVw5bguRDUAD9UcCwsEGtRjdgebIi61t4nMcNnhU1qbTF1J3bjANXUQCEp5p/mATdrfhSyUzcF6YKTtxckHVnUhOAgFWnbaT1N5hGTKEr+VAq62Sj2IxqCJVHqW+yQU2KZ+FZGhJZaRI7yL4LSIkurPkmPHy/FyN33SvAFRhjFt+AcD201n6iO64HG9QS4yCiUG350XNv3M2SYT8ilQtyKLO/cDlfGAMdoO+qyVtJDWZSPReMs+8f1/pEwhJERro3/+tjxlk/p1K/SfC/GtHWSDg51PEYlCE/abinaD2Qj/bKEtLVeNwDdg1K0exBdLV/XWBKomFmyhacqlghRCed25Jc/ShKLd9OiO6s5kUyUIkkpuHjH4/LBeiKePXoddYA+H7LyRTsz/Z4iDLgHWpnBL3ifYUfgKeFucYArO6er4ia/QERRC08wWTzFxRflRpWpnTTALit2fEU=
+
