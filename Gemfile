@@ -4,6 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rake', group: :test
-gem 'codeclimate-test-reporter', group: :test, require: nil
+gem 'simplecov', group: :test, require: false
 gem 'pry', '~> 0.10.3', group: :development, require: nil
 
