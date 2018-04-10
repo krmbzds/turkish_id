@@ -6,5 +6,5 @@ gemspec
 gem 'rake', group: :test
 gem 'simplecov', group: :test, require: false
 gem 'simplecov-console', group: :test, require: false
-gem 'pry', '~> 0.10.3', group: :development, require: nil
+gem 'pry', '~> 0.11.3', group: :development, require: nil
 
