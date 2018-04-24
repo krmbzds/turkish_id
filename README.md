@@ -1,6 +1,5 @@
-# Turkish ID [![Build Status](https://travis-ci.org/krmbzds/turkish_id.svg?branch=master)](https://travis-ci.org/krmbzds/turkish_id) [![Dependency Status](https://gemnasium.com/krmbzds/turkish_id.svg)](https://gemnasium.com/krmbzds/turkish_id) [![Gem](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id) [![Code Climate](https://codeclimate.com/github/krmbzds/turkish_id/badges/gpa.svg)](https://codeclimate.com/github/krmbzds/turkish_id) [![Test Coverage](https://codeclimate.com/github/krmbzds/turkish_id/badges/coverage.svg)](https://codeclimate.com/github/krmbzds/turkish_id/coverage)
+# Turkish ID [![Build Status](https://travis-ci.org/krmbzds/turkish_id.svg?branch=master)](https://travis-ci.org/krmbzds/turkish_id) [![Gem](https://img.shields.io/gem/v/turkish_id.svg)](https://github.com/krmbzds/turkish_id) [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id) [![Gem](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id) [![Code Climate](https://codeclimate.com/github/krmbzds/turkish_id/badges/gpa.svg)](https://codeclimate.com/github/krmbzds/turkish_id) [![Test Coverage](https://codeclimate.com/github/krmbzds/turkish_id/badges/coverage.svg)](https://codeclimate.com/github/krmbzds/turkish_id/coverage)
 This gem provides methods to validate Turkish Identification Numbers.
-
 
 ## Installation
 
