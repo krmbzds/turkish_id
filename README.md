@@ -22,6 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
+### Validating ID Numbers
+
 Create a new instance:
 
 ```rb
@@ -42,22 +44,7 @@ $ turkish_id 10000000078
 Your identification number is valid.
 ```
 
-## Anatomy of the Turkish ID Number
-
-The Turkish Identification Number consists of ```11``` digits.
-
-There are three conditions for a valid identification number:
-
-1. ```d1 > 0```
-2. ```d10 == ((d1 + d3 + d5 + d7 + d9) * 7 - (d2 + d4 + d6 + d8)) mod 10```
-3. ```d11 == (d1 + d2 + d3 + d4 + d5 + d6 + d8 + d9 + d10) mod 10```
-
-Where ```dn``` refers to the ```n-th``` digit of the identification number.
-
-Remember that a valid identification number does not imply the existence of an ID. It could only be used as a preliminary check e.g. before querying a government website. This is very similar to credit card validation.
-
-
-## Generating Relatives
+### Generating Relatives
 
 You can generate ID numbers for your younger or elder relatives.
 
@@ -83,7 +70,7 @@ me.elder_relative.first
 
 ```rb
 3.times do
- puts me.elder_relative.next()
+ puts me.elder_relative.next
 end
 
 #=> 10035998982
@@ -98,6 +85,25 @@ me.elder_relative.take(5)
 ```
 
 And so on.
+
+## Anatomy of the Turkish ID Number
+
+The Turkish Identification Number consists of ```11``` digits.
+
+There are three conditions for a valid identification number:
+
+1. ```d1 > 0```
+2. ```d10 == ((d1 + d3 + d5 + d7 + d9) * 7 - (d2 + d4 + d6 + d8)) mod 10```
+3. ```d11 == (d1 + d2 + d3 + d4 + d5 + d6 + d8 + d9 + d10) mod 10```
+
+Where ```dn``` refers to the ```n-th``` digit of the identification number.
+
+Remember that a valid identification number does not imply the existence of an ID. It could only be used as a preliminary check e.g. before querying a government website. This is very similar to credit card validation.
+
+## Support
+
+This gem is used in production and tested against the following Ruby versions: `ruby-head`,  `2.5.1`, `2.4.4`, `2.3.7`, `2.2.10`, `2.1.8`, `1.9.3`. It has no dependencies and will likely work in any Ruby version above `1.9.3`. To make sure there are no breaking changes add it to your Gemfile using the pessimistic operator: `gem 'turkish_id', '~> 0.4.0'`.
+
 
 ## Development
 
@@ -115,6 +121,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/krmbzds/turkish_id.
 
+## Is it any good?
+
+Yes.
 
 ## License
 
