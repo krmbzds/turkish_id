@@ -51,4 +51,25 @@ describe TurkishId do
     expect(identity_number.is_valid?).to eq(false)
   end
 
+  it 'generates elder relatives' do
+    identity_number = TurkishId.new(10000000146)
+    expect(identity_number.elder_relative.first).to eq(10003000082)
+  end
+
+  it 'generates younger relatives' do
+    identity_number = TurkishId.new(10003000082)
+    expect(identity_number.younger_relative.first).to eq(10000000146)
+  end
+
+  it 'generates multiple elder relatives' do
+    identity_number = TurkishId.new(10000000146)
+    elder_relatives = identity_number.elder_relative.take(3)
+    expect(elder_relatives).to eq([10003000082, 10005999902, 10008999848])
+  end
+
+  it 'generates multiple younger relatives' do
+    identity_number = TurkishId.new(10008999848)
+    elder_relatives = identity_number.younger_relative.take(3)
+    expect(elder_relatives).to eq([10005999902, 10003000082, 10000000146])
+  end
 end
