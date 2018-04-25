@@ -1,4 +1,7 @@
-# Turkish ID [![Build Status](https://travis-ci.org/krmbzds/turkish_id.svg?branch=master)](https://travis-ci.org/krmbzds/turkish_id) [![Gem](https://img.shields.io/gem/v/turkish_id.svg)](https://github.com/krmbzds/turkish_id) [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id) [![Gem](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id) [![Code Climate](https://codeclimate.com/github/krmbzds/turkish_id/badges/gpa.svg)](https://codeclimate.com/github/krmbzds/turkish_id) [![Test Coverage](https://codeclimate.com/github/krmbzds/turkish_id/badges/coverage.svg)](https://codeclimate.com/github/krmbzds/turkish_id/coverage)
+# Turkish ID
+
+[![Build Status](https://travis-ci.org/krmbzds/turkish_id.svg?branch=master)](https://travis-ci.org/krmbzds/turkish_id) [![Gem](https://img.shields.io/gem/v/turkish_id.svg)](https://github.com/krmbzds/turkish_id) [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id) [![Gem](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id) [![Code Climate](https://codeclimate.com/github/krmbzds/turkish_id/badges/gpa.svg)](https://codeclimate.com/github/krmbzds/turkish_id) [![Test Coverage](https://codeclimate.com/github/krmbzds/turkish_id/badges/coverage.svg)](https://codeclimate.com/github/krmbzds/turkish_id/coverage)
+
 This gem provides methods to validate Turkish Identification Numbers.
 
 ## Installation
@@ -22,7 +25,7 @@ Or install it yourself as:
 Create a new instance:
 
 ```rb
-identity_number = TurkishId.new('10000000146')
+identity_number = TurkishId.new(10000000146)
 ```
 
 Use ```is_valid?``` method to check validity:
@@ -52,6 +55,49 @@ There are three conditions for a valid identification number:
 Where ```dn``` refers to the ```n-th``` digit of the identification number.
 
 Remember that a valid identification number does not imply the existence of an ID. It could only be used as a preliminary check e.g. before querying a government website. This is very similar to credit card validation.
+
+
+## Generating Relatives
+
+You can generate ID numbers for your younger or elder relatives.
+
+```rb
+me = TurkishId.new(10000000146)
+me.elder_relatives.take(5)
+```
+
+Calling `younger_relative` or `elder_relative` will return an Enumerable class.
+
+```rb
+me.elder_relative
+#=> #<Enumerator:0x00007f9e629032d0>
+```
+
+You can perform standard Enumerable operations on it.
+
+```rb
+me.elder_relative.first
+
+#=> 10003000082
+```
+
+```rb
+3.times do
+ puts me.elder_relative.next()
+end
+
+#=> 10035998982
+#=> 10005999902
+#=> 10008999848
+```
+
+```rb
+me.elder_relative.take(5)
+
+#=> [10003000082, 10005999902, 10008999848, 10011999774, 10014999610]
+```
+
+And so on.
 
 ## Development
 
