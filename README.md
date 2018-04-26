@@ -33,15 +33,13 @@ identity_number = TurkishId.new(10000000146)
 Use ```is_valid?``` method to check validity:
 
 ```rb
-identity_number.is_valid?
-=> true
+identity_number.is_valid?  #=> true
 ```
 
 Or use the command line executable:
 
 ```sh
-$ turkish_id 10000000078
-Your identification number is valid.
+$ turkish_id 10000000078  #=> Your identification number is valid.
 ```
 
 ### Generating Relatives
@@ -50,22 +48,18 @@ You can generate ID numbers for your younger or elder relatives.
 
 ```rb
 me = TurkishId.new(10000000146)
-me.elder_relatives.take(5)
 ```
 
 Calling `younger_relative` or `elder_relative` will return an Enumerable class.
 
 ```rb
-me.elder_relative
-#=> #<Enumerator:0x00007f9e629032d0>
+me.elder_relative  #=> #<Enumerator:0x00007f9e629032d0>
 ```
 
 You can perform standard Enumerable operations on it.
 
 ```rb
-me.elder_relative.first
-
-#=> 10003000082
+me.elder_relative.first  #=> 10003000082
 ```
 
 ```rb
@@ -79,9 +73,7 @@ end
 ```
 
 ```rb
-me.elder_relative.take(5)
-
-#=> [10003000082, 10005999902, 10008999848, 10011999774, 10014999610]
+me.elder_relative.take(5)  #=> [10003000082, 10005999902, 10008999848, 10011999774, 10014999610]
 ```
 
 And so on.
@@ -127,6 +119,6 @@ Yes.
 
 ## License
 
-Copyright © 2015 Kerem Bozdaş
+Copyright © 2015 [Kerem Bozdaş](http://kerembozdas.com/)
 
 This gem is available under the terms of the [MIT License](https://github.com/krmbzds/turkish_id/blob/master/LICENSE.txt).
