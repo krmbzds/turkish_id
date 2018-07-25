@@ -55,6 +55,7 @@ class TurkishId
       id = join_num(id_array)
       loop do
         id = next_relative(id, direction)
+        break unless id.between?(100000001, 999999999)
         y << append_checksum(id)
       end
     end

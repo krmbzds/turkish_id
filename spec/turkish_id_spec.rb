@@ -72,4 +72,16 @@ describe TurkishId do
     elder_relatives = identity_number.younger_relative.take(3)
     expect(elder_relatives).to eq([10005999902, 10003000082, 10000000146])
   end
+
+  it 'does not generate relatives below 100000001cc' do
+    identity_number = TurkishId.new(10000000146)
+    younger_relatives = identity_number.younger_relative.take(3)
+    expect(younger_relatives).to eq([])
+  end
+
+  it 'does not generate relatives above 999999999cc' do
+    identity_number = TurkishId.new(99997183780)
+    elder_relatives = identity_number.elder_relative.take(3)
+    expect(elder_relatives).to eq([])
+  end
 end
