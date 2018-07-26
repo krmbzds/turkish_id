@@ -94,7 +94,7 @@ Remember that a valid identification number does not imply the existence of an I
 
 ## Support
 
-This gem is used in production and tested against the following Ruby versions: `ruby-head`,  `2.5.1`, `2.4.4`, `2.3.7`, `2.2.10`, `2.1.8`, `1.9.3`. It has no dependencies and will likely work in any Ruby version above `1.9.3`. To make sure there are no breaking changes add it to your Gemfile using the pessimistic operator: `gem 'turkish_id', '~> 0.4.0'`.
+This gem is used in production and tested against the following Ruby versions: `ruby-head`,  `2.5.1`, `2.4.4`, `2.3.7`, `2.2.10`, `2.1.8`, `1.9.3`. It has no dependencies and will likely work in any Ruby version above `1.9.3`. To make sure there are no breaking changes add it to your Gemfile using the pessimistic operator: `gem 'turkish_id', '~> 0.5.0'`.
 
 
 ## Development
