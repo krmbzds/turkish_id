@@ -11,10 +11,9 @@ rvm:
   - 2.1.8
   - 1.9.3
 before_install:
-  - gem update --system
-  - gem --version
-  - gem install bundler
-
+  - 'if [[ `ruby -v` =~ 2.2.10 ]]; gem update --system; then gem update --system; else gem update --system 2.7.8; fi'
+  - 'gem --version'
+  - 'gem install bundler'
 env:
   global:
     - CC_TEST_REPORTER_ID=92655ba2c8b47200f80e996afb80c410b9491514845d414d7517108ad35a5178
