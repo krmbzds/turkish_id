@@ -1,4 +1,4 @@
-# Turkish ID
+# Turkish ID 🔖
 
 [![Build Status](https://travis-ci.org/krmbzds/turkish_id.svg?branch=master)](https://travis-ci.org/krmbzds/turkish_id) [![Gem](https://img.shields.io/gem/v/turkish_id.svg)](https://github.com/krmbzds/turkish_id) [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id) [![Gem](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id) [![Code Climate](https://codeclimate.com/github/krmbzds/turkish_id/badges/gpa.svg)](https://codeclimate.com/github/krmbzds/turkish_id) [![Test Coverage](https://codeclimate.com/github/krmbzds/turkish_id/badges/coverage.svg)](https://codeclimate.com/github/krmbzds/turkish_id/coverage)
 
@@ -94,24 +94,25 @@ Remember that a valid identification number does not imply the existence of an I
 
 ## Support
 
-This gem is used in production and tested against the following Ruby versions: `ruby-head`,  `2.5.1`, `2.4.4`, `2.3.7`, `2.2.10`, `2.1.8`, `1.9.3`. It has no dependencies and will likely work in any Ruby version above `1.9.3`. To make sure there are no breaking changes add it to your Gemfile using the pessimistic operator: `gem 'turkish_id', '~> 0.5.0'`.
-
+This gem is used in production and tested against the following Ruby versions: `ruby-head`, `2.6.0`, `2.5.3`, `2.5.1`, `2.4.5`, `2.4.4`, `2.3.7`, `2.2.10`, `2.1.8`, `1.9.3`. It has no dependencies and will likely work in any Ruby version above `1.9.3`. To make sure there are no breaking changes add it to your Gemfile using the pessimistic operator: `gem 'turkish_id', '~> 0.6.0'`.
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org][RubyGems].
 
 ## Contributing
 
-1. Fork it ( http://github.com/krmbzds/turkish_id/fork )
+1. [Fork the repository][Fork]
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/krmbzds/turkish_id.
+### Donations ❤️
+
+You can donate me at [Librepay][Donation]. Thanks! ☕️
 
 ## Is it any good?
 
@@ -119,6 +120,12 @@ Yes.
 
 ## License
 
-Copyright © 2015 [Kerem Bozdaş](http://kerembozdas.com/)
+Copyright © 2019 [Kerem Bozdas][Personal Webpage]
 
-This gem is available under the terms of the [MIT License](https://github.com/krmbzds/turkish_id/blob/master/LICENSE.txt).
+This gem is available under the terms of the [MIT License][License].
+
+[Donation]: https://liberapay.com/krmbzds/donate
+[Fork]: https://github.com/krmbzds/turkish_id/fork
+[License]: https://kerem.mit-license.org
+[Personal Webpage]: https://kerembozdas.com
+[RubyGems]: https://rubygems.org
