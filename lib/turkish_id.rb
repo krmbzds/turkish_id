@@ -1,4 +1,4 @@
-require "turkish_id/version"
+require 'turkish_id/version'
 
 class TurkishId
   attr_reader :id_number, :checksum, :elder_relative, :younger_relative
