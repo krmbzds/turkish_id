@@ -8,5 +8,4 @@ group :test do
   gem 'bundler', '~> 1.10'
   gem 'rspec', '~> 3.4'
   gem 'simplecov', '~> 0.16.1'
-  gem 'simplecov-console', '~> 0.4.2'
 end
