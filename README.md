@@ -98,9 +98,9 @@ Remember that a valid identification number does not imply the existence of an I
 
 This gem is used in production and tested against the following Ruby versions:
 
-- ✅ `2.6.3` (stable)
-- ✅ `2.5.5` (stable)
-- ⏳ `2.4.6` (security maintenance)
+- ✅ `2.6.4` (stable)
+- ✅ `2.5.6` (stable)
+- ⏳ `2.4.7` (security maintenance)
 
 ## Development
 
