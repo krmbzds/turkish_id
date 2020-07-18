@@ -30,10 +30,10 @@ Create a new instance:
 identity_number = TurkishId.new(10000000146)
 ```
 
-Use ```is_valid?``` method to check validity:
+Use ```valid?``` method to check validity:
 
 ```rb
-identity_number.is_valid?  #=> true
+identity_number.valid?  #=> true
 ```
 
 Or use the command line executable:

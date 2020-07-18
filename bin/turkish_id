@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# encoding: UTF-8
+# frozen_string_literal: true
 
 lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
 $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
@@ -22,11 +22,11 @@ end
 
 def validate_id(id_number)
   identity_number = TurkishId.new(id_number)
-  print_result(identity_number.is_valid?)
+  print_result(identity_number.valid?)
 end
 
 def print_result(result)
-  STDOUT.puts "Your identification number is #{ result ? 'valid' : 'invalid' }."
+  STDOUT.puts "Your identification number is #{result ? 'valid' : 'invalid'}."
 end
 
 def print_help

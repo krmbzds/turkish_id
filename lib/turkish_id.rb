@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'turkish_id/version'
 
 class TurkishId
@@ -10,17 +12,11 @@ class TurkishId
     @younger_relative = generate_relatives(@id_number, :down)
   end
 
-  def is_valid?
-    # Early termination, bad length or first digit
-    return false if @id_number.length != 11 || @id_number.first == 0
+  def valid?
+    return false if @id_number.length != 11 || @id_number.first.zero?
+    return false if @id_number.values_at(9, 10) != @checksum ||= calculate_checksum(@id_number)
 
-    # Calculate checksum if not already calculated
-    @checksum ||= calculate_checksum(@id_number)
-
-    # Check if tenth or eleventh digits match the algorithm
-    return false if @id_number[9] != @checksum[0] || @id_number[10] != @checksum[1]
-
-    true  # All conditions met
+    true
   end
 
   private
@@ -36,7 +32,7 @@ class TurkishId
 
     # Return checksum
     [d10, d11]
-  rescue
+  rescue StandardError
     []
   end
 
@@ -47,7 +43,7 @@ class TurkishId
 
   def next_relative(id_array, direction)
     tree = { up: 1, down: -1 }
-    get_core(id_array) + 29999 * tree[direction]
+    get_core(id_array) + 29_999 * tree[direction]
   end
 
   def generate_relatives(id_array, direction)
@@ -55,23 +51,26 @@ class TurkishId
       id = join_num(id_array)
       loop do
         id = next_relative(id, direction)
-        break unless id.between?(100000001, 999999999)
+        break unless id.between?(100_000_001, 999_999_999)
+
         y << append_checksum(id)
       end
     end
   end
 
   def get_id_array(id)
-    split_num(Integer(id)) rescue []
+    split_num(Integer(id))
+  rescue StandardError
+    []
   end
 
   def split_num(num)
     n = Math.log10(num).floor
-    (0..n).map{ |i| (num / 10 ** (n - i)) % 10 }
+    (0..n).map { |i| (num / 10**(n - i)) % 10 }
   end
 
   def join_num(id_array)
-    id_array.inject{ |a, i| a * 10 + i }
+    id_array.inject { |a, i| a * 10 + i }
   end
 
   def get_core(id_array)
