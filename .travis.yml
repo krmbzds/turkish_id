@@ -1,8 +1,8 @@
 language: ruby
 rvm:
-  - 2.6.5
-  - 2.5.7
-  - 2.4.9
+  - 2.7.1
+  - 2.6.6
+  - 2.5.8
 before_install:
   - 'gem update --system'
   - 'gem --version'
