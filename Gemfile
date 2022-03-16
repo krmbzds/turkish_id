@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Specify your gem's dependencies in turkish_id.gemspec
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+# Specify your gem's dependencies in viabtc.gemspec
 gemspec
-
-group :test do
-  gem 'bundler'
-  gem 'rake'
-  gem 'rspec'
-  gem 'simplecov'
-end

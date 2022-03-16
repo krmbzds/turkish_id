@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'turkish_id/version'
+require "turkish_id/version"
 
 class TurkishId
   attr_reader :id_number, :checksum, :elder_relative, :younger_relative
@@ -32,7 +32,7 @@ class TurkishId
 
     # Return checksum
     [d10, d11]
-  rescue StandardError
+  rescue
     []
   end
 
@@ -42,7 +42,7 @@ class TurkishId
   end
 
   def next_relative(id_array, direction)
-    tree = { up: 1, down: -1 }
+    tree = {up: 1, down: -1}
     get_core(id_array) + 29_999 * tree[direction]
   end
 
@@ -60,7 +60,7 @@ class TurkishId
 
   def get_id_array(id)
     split_num(Integer(id))
-  rescue StandardError
+  rescue
     []
   end
 

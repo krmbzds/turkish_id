@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+lib = File.expand_path(File.dirname(__FILE__) + "/../lib")
 $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
 
-require 'turkish_id'
+require "turkish_id"
 
 @help = '
   Usage
@@ -16,21 +16,10 @@ require 'turkish_id'
 
 '
 
-def parse_input
-  ARGV[0] ? validate_id(ARGV[0]) : print_help
+if ARGV[0]
+  result = TurkishId.new(ARGV[0]).valid?
+  $stdout.puts result
+  exit result ? 0 : 1
+else
+  $stdout.puts @help
 end
-
-def validate_id(id_number)
-  identity_number = TurkishId.new(id_number)
-  print_result(identity_number.valid?)
-end
-
-def print_result(result)
-  STDOUT.puts "Your identification number is #{result ? 'valid' : 'invalid'}."
-end
-
-def print_help
-  STDOUT.puts @help
-end
-
-parse_input

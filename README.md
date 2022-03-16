@@ -1,6 +1,12 @@
 # Turkish ID 🔖
 
-[![Build Status](https://travis-ci.org/krmbzds/turkish_id.svg?branch=master)](https://travis-ci.org/krmbzds/turkish_id) [![Gem](https://img.shields.io/gem/v/turkish_id.svg)](https://github.com/krmbzds/turkish_id) [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id) [![Gem](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id) [![Code Climate](https://codeclimate.com/github/krmbzds/turkish_id/badges/gpa.svg)](https://codeclimate.com/github/krmbzds/turkish_id) [![Test Coverage](https://codeclimate.com/github/krmbzds/turkish_id/badges/coverage.svg)](https://codeclimate.com/github/krmbzds/turkish_id/coverage)
+[![Status](https://img.shields.io/github/workflow/status/krmbzds/turkish_id/Test/master)](https://github.com/krmbzds/turkish_id/actions/workflows/test.yml)
+[![Coverage](https://img.shields.io/coveralls/github/krmbzds/turkish_id)](https://coveralls.io/github/krmbzds/turkish_id)
+[![Downloads](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id)
+[![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/krmbzds/turkish_id)](https://codeclimate.com/github/krmbzds/turkish_id)
+[![Version](https://img.shields.io/gem/v/turkish_id.svg)](https://github.com/krmbzds/turkish_id)
+[![Docs](https://img.shields.io/badge/rubydoc-info-blue.svg)](https://www.rubydoc.info/gems/turkish_id)
 
 This gem provides methods to validate Turkish Identification Numbers.
 
@@ -39,7 +45,10 @@ identity_number.valid?  #=> true
 Or use the command line executable:
 
 ```sh
-$ turkish_id 10000000078  #=> Your identification number is valid.
+$ turkish_id 10000000078  #=> true
+$ echo $?                 #=> 0
+$ turkish_id 10000000079  #=> false
+$ echo $?                 #=> 1
 ```
 
 ### Generating Relatives
@@ -98,9 +107,10 @@ Remember that a valid identification number does not imply the existence of an I
 
 This gem is used in production and tested against the following Ruby versions:
 
-- ✅ `2.7.1` (stable)
-- ✅ `2.6.6` (stable)
-- ⏳ `2.5.8` (security maintenance)
+- ✅ `3.1.1` (stable)
+- ✅ `3.0.3` (stable)
+- ✅ `2.7.5` (stable)
+- ⏳ `2.6.9` (security maintenance)
 
 ## Development
 
@@ -126,7 +136,7 @@ Yes.
 
 ## License
 
-Copyright © 2019 [Kerem Bozdas][Personal Webpage]
+Copyright © 2015-2022 [Kerem Bozdas][Personal Webpage]
 
 This gem is available under the terms of the [MIT License][License].
 
