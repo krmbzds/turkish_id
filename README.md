@@ -1,6 +1,6 @@
 # Turkish ID 🔖
 
-[![Status](https://img.shields.io/github/workflow/status/krmbzds/turkish_id/Test/master)](https://github.com/krmbzds/turkish_id/actions/workflows/test.yml)
+[![Status](https://img.shields.io/github/actions/workflow/status/krmbzds/turkish_id/test.yml?branch=master)](https://github.com/krmbzds/turkish_id/actions/workflows/test.yml)
 [![Coverage](https://img.shields.io/coveralls/github/krmbzds/turkish_id)](https://coveralls.io/github/krmbzds/turkish_id)
 [![Downloads](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id)
@@ -136,7 +136,7 @@ Yes.
 
 ## License
 
-Copyright © 2015-2022 [Kerem Bozdas][Personal Webpage]
+Copyright © 2015-2023 [Kerem Bozdas][Personal Webpage]
 
 This gem is available under the terms of the [MIT License][License].
 
