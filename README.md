@@ -107,7 +107,7 @@ Remember that a valid identification number does not imply the existence of an I
 
 This gem is used in production and tested against the following Ruby versions:
 
-- ✅ `3.2.0` (stable)
+- ✅ `3.2.1` (stable)
 - ✅ `3.1.3` (stable)
 - ✅ `3.0.5` (stable)
 - ⏳ `2.7.7` (security maintenance)
