@@ -21,8 +21,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib", "lib/turkish_id"]
 
   spec.add_development_dependency "bundler"
+  spec.add_development_dependency "coveralls_reborn"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "standard"
-  spec.add_development_dependency "coveralls_reborn"
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "webmock"
+
+  spec.add_runtime_dependency "savon"
 end

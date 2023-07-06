@@ -1,0 +1,168 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - POST,GET
+      Strict-Transport-Security:
+      - max-age=16070400;includeSubDomains
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1;mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - default-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'
+        'unsafe-eval' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
+        img-src 'self' 'unsafe-inline' data:;frame-src https://www.google.com/recaptcha/
+        https://tckimliktest.nvi.gov.tr https://tckimlik.nvi.gov.tr; style-src 'self'
+        'unsafe-inline'
+      Referer-Policy:
+      - no-referer
+      Date:
+      - Thu, 06 Jul 2023 15:17:32 GMT
+      Content-Length:
+      - '3418'
+      Set-Cookie:
+      - TS01326bb0=0179b2ce4547096aa436bb2f57d849173f8b4ffd6d03b39f2ac8f35c98b9fb0e25ff63b08dec6aa71f4c4f6f130f90bf37e419b765;
+        Path=/; Domain=.tckimlik.nvi.gov.tr
+    body:
+      encoding: ASCII-8BIT
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\" xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\"
+        xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://tckimlik.nvi.gov.tr/WS\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\"
+        xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" targetNamespace=\"http://tckimlik.nvi.gov.tr/WS\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n  <wsdl:types>\r\n    <s:schema
+        elementFormDefault=\"qualified\" targetNamespace=\"http://tckimlik.nvi.gov.tr/WS\">\r\n
+        \     <s:element name=\"TCKimlikNoDogrula\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TCKimlikNo\" type=\"s:long\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Ad\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Soyad\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"DogumYili\" type=\"s:int\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"TCKimlikNoDogrulaResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"TCKimlikNoDogrulaResult\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \   </s:schema>\r\n  </wsdl:types>\r\n  <wsdl:message name=\"TCKimlikNoDogrulaSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:TCKimlikNoDogrula\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"TCKimlikNoDogrulaSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:TCKimlikNoDogrulaResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:portType name=\"KPSPublicSoap\">\r\n    <wsdl:operation
+        name=\"TCKimlikNoDogrula\">\r\n      <wsdl:input message=\"tns:TCKimlikNoDogrulaSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:TCKimlikNoDogrulaSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \ </wsdl:portType>\r\n  <wsdl:binding name=\"KPSPublicSoap\" type=\"tns:KPSPublicSoap\">\r\n
+        \   <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"TCKimlikNoDogrula\">\r\n      <soap:operation soapAction=\"http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"KPSPublicSoap12\" type=\"tns:KPSPublicSoap\">\r\n    <soap12:binding
+        transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n    <wsdl:operation
+        name=\"TCKimlikNoDogrula\">\r\n      <soap12:operation soapAction=\"http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:service name=\"KPSPublic\">\r\n    <wsdl:port name=\"KPSPublicSoap\"
+        binding=\"tns:KPSPublicSoap\">\r\n      <soap:address location=\"https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"KPSPublicSoap12\" binding=\"tns:KPSPublicSoap12\">\r\n
+        \     <soap12:address location=\"https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+  recorded_at: Thu, 06 Jul 2023 15:17:32 GMT
+- request:
+    method: post
+    uri: https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://tckimlik.nvi.gov.tr/WS"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:s="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"><env:Body><tns:TCKimlikNoDogrula><tns:TCKimlikNo>99997183780</tns:TCKimlikNo><tns:Ad>RAVEBASE</tns:Ad><tns:Soyad>PHASE
+        9</tns:Soyad><tns:DogumYili>1997</tns:DogumYili></tns:TCKimlikNoDogrula></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '875'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Access-Control-Allow-Methods:
+      - POST,GET
+      Strict-Transport-Security:
+      - max-age=16070400;includeSubDomains
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1;mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - default-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'
+        'unsafe-eval' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
+        img-src 'self' 'unsafe-inline' data:;frame-src https://www.google.com/recaptcha/
+        https://tckimliktest.nvi.gov.tr https://tckimlik.nvi.gov.tr; style-src 'self'
+        'unsafe-inline'
+      Referer-Policy:
+      - no-referer
+      Date:
+      - Thu, 06 Jul 2023 15:17:32 GMT
+      Content-Length:
+      - '395'
+      Set-Cookie:
+      - TS01326bb0=0179b2ce450bc4e83b823117688a50a716626538b3aab2380963bf3ee02c347c1cfb765119d4bd2948299fafdcfa605f8ff0137b15;
+        Path=/; Domain=.tckimlik.nvi.gov.tr
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><TCKimlikNoDogrulaResponse
+        xmlns="http://tckimlik.nvi.gov.tr/WS"><TCKimlikNoDogrulaResult>false</TCKimlikNoDogrulaResult></TCKimlikNoDogrulaResponse></soap:Body></soap:Envelope>
+  recorded_at: Thu, 06 Jul 2023 15:17:32 GMT
+recorded_with: VCR 6.2.0

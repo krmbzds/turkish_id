@@ -5,21 +5,41 @@ lib = File.expand_path(File.dirname(__FILE__) + "/../lib")
 $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
 
 require "turkish_id"
+require "turkish_id/version"
 
-@help = '
+HELP = '
   Usage
-    turkish_id QUERY
+    turkish_id ID_NUMBER [GIVEN_NAME SURNAME YEAR_OF_BIRTH]
+
+  Description
+    turkish_id validates Turkish identity numbers.
+    Only providing ID_NUMBER performs numerical validation (offline).
+    Providing all arguments will query government registry (online).
 
   Examples
     turkish_id 10000000078
-    turkish_id 10000000146
+    turkish_id 10000000146 Ahmet Yılmaz 1984
+    turkish_id 10005999902 "Ayşe Nur" Yılmaz 1996
 
 '
 
-if ARGV[0]
-  result = TurkishId.new(ARGV[0]).valid?
-  $stdout.puts result
-  exit result ? 0 : 1
-else
-  $stdout.puts @help
+result =
+  case ARGV.length
+  when 1 then TurkishId.new(ARGV[0]).valid?
+  when 4 then TurkishId.new(ARGV[0]).registered?(ARGV[1], ARGV[2], ARGV[3])
+  else $stdout.puts HELP
+       exit 1
+  end
+
+if ["-?", "-h", "--help", "--usage"].include?(ARGV[0])
+  $stdout.puts HELP
+  exit 1
 end
+
+if ["-v", "-V", "--version"].include?(ARGV[0])
+  $stdout.puts TurkishId::VERSION
+  exit 0
+end
+
+$stdout.puts result
+exit result ? 0 : 1

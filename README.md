@@ -3,7 +3,7 @@
 [![Status](https://img.shields.io/github/actions/workflow/status/krmbzds/turkish_id/test.yml?branch=master)](https://github.com/krmbzds/turkish_id/actions/workflows/test.yml)
 [![Coverage](https://img.shields.io/coveralls/github/krmbzds/turkish_id)](https://coveralls.io/github/krmbzds/turkish_id)
 [![Downloads](https://img.shields.io/gem/dt/turkish_id.svg)](https://rubygems.org/gems/turkish_id)
-[![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://rubygems.org/gems/turkish_id)
+[![Dependencies](https://img.shields.io/badge/dependencies-1-yellowgreen.svg)](https://rubygems.org/gems/turkish_id)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/krmbzds/turkish_id)](https://codeclimate.com/github/krmbzds/turkish_id)
 [![Version](https://img.shields.io/gem/v/turkish_id.svg)](https://github.com/krmbzds/turkish_id)
 [![Docs](https://img.shields.io/badge/rubydoc-info-blue.svg)](https://www.rubydoc.info/gems/turkish_id)
@@ -42,13 +42,18 @@ Use ```valid?``` method to check validity:
 identity_number.valid?  #=> true
 ```
 
-Or use the command line executable:
+### Querying the Government Registry
 
-```sh
-$ turkish_id 10000000078  #=> true
-$ echo $?                 #=> 0
-$ turkish_id 10000000079  #=> false
-$ echo $?                 #=> 1
+Create a new instance:
+
+```rb
+identity_number = TurkishId.new(10000000146)
+```
+
+Use ```registered?``` method to query the government registry:
+
+```rb
+identity_number.registered?("Ahmet", "Yılmaz", 1987)  #=> false
 ```
 
 ### Generating Relatives
@@ -87,6 +92,40 @@ me.elder_relative.take(5)  #=> [10003000082, 10005999902, 10008999848, 100119997
 
 And so on.
 
+## CLI (Command Line Interface)
+
+You can use the CLI for quick lookups:
+
+```sh
+$ turkish_id 10000000078  #=> true
+```
+
+The executable terminates with a proper [exit status](https://en.wikipedia.org/wiki/Exit_status):
+
+```sh
+$ turkish_id 10000000078  #=> true
+$ echo $?                 #=> 0
+$ turkish_id 10000000079  #=> false
+$ echo $?                 #=> 1
+```
+
+Run `turkish_id --help` to learn more:
+
+```groff
+Usage
+  turkish_id ID_NUMBER [GIVEN_NAME SURNAME YEAR_OF_BIRTH]
+
+Description
+  turkish_id validates Turkish identity numbers.
+  Only providing ID_NUMBER performs numerical validation (offline).
+  Providing all arguments will query government registry (online).
+
+Examples
+  turkish_id 10000000078
+  turkish_id 10000000146 Ahmet Yılmaz 1984
+  turkish_id 10005999902 "Ayşe Nur" Yılmaz 1996
+```
+
 ## Anatomy of the Turkish ID Number
 
 The Turkish Identification Number consists of ```11``` digits.
@@ -99,7 +138,7 @@ There are three conditions for a valid identification number:
 
 Where ```dn``` refers to the ```n-th``` digit of the identification number.
 
-Remember that a valid identification number does not imply the existence of an ID. It could only be used as a preliminary check e.g. before querying a government website. This is very similar to credit card validation.
+Remember that a valid identification number does not imply the existence of an ID. It could only be used as a preliminary check e.g. before [querying a government website](#querying-the-government-registry). This is very similar to credit card validation.
 
 ## Support
 

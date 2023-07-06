@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-describe TurkishId do
+describe TurkishId, vcr: true do
   it "has a version number" do
     expect(TurkishId::VERSION).not_to be nil
   end
@@ -82,5 +82,57 @@ describe TurkishId do
     identity_number = TurkishId.new(99_997_183_780)
     elder_relatives = identity_number.elder_relative.take(3)
     expect(elder_relatives).to eq([])
+  end
+
+  it "checks government registry for valid id number" do
+    identity_number = TurkishId.new(10_000_000_146)
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.registered?("Gazi Mustafa Kemal Paşa", "Atatürk", 1881)).to eq(true)
+  end
+
+  it "checks government registry for numerically valid unregistered id number" do
+    identity_number = TurkishId.new(99_997_183_780)
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.registered?("RaveBase", "Phase 9", 1997)).to eq(false)
+  end
+
+  it "does not query government registry for invalid id number" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new(10_000_000_000)
+    expect(identity_number.valid?).to eq(false)
+    expect(identity_number.registered?("Nothing", "Happened", 1989)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query government registry for invalid year of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new(10_000_000_146)
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.registered?("Ahmet", "Yılmaz", "2nd Millennium")).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query government registry for nil year of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new(10_000_000_146)
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.registered?("Ayşe", "Yılmaz", nil)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query government registry for nil given name" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new(10_000_000_146)
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.registered?(nil, "Yılmaz", 2001)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query government registry for nil surname" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new(10_000_000_146)
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.registered?("Ayşe", nil, 2000)).to eq(false)
+    assert_not_requested(stub_any)
   end
 end

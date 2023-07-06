@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "turkish_id/version"
+require "savon"
 
 class TurkishId
   attr_reader :id_number, :checksum, :elder_relative, :younger_relative
@@ -17,6 +18,10 @@ class TurkishId
     return false if @id_number.values_at(9, 10) != @checksum ||= calculate_checksum(@id_number)
 
     true
+  end
+
+  def registered?(given_name, surname, year_of_birth)
+    valid? && query_government_registry(given_name, surname, year_of_birth)
   end
 
   private
@@ -75,5 +80,19 @@ class TurkishId
 
   def get_core(id_array)
     join_num(split_num(id_array).take(9))
+  end
+
+  def query_government_registry(given_name, surname, year_of_birth)
+    client = Savon.client(wsdl: "https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL")
+    response = client.call(:tc_kimlik_no_dogrula, message: {
+      "TCKimlikNo" => join_num(@id_number),
+      "Ad" => given_name.upcase(:turkic),
+      "Soyad" => surname.upcase(:turkic),
+      "DogumYili" => String(Date.new(Integer(year_of_birth)).year)
+    })
+
+    response.body.dig(:tc_kimlik_no_dogrula_response, :tc_kimlik_no_dogrula_result).is_a?(TrueClass)
+  rescue TypeError, ArgumentError, NoMethodError
+    false
   end
 end
