@@ -93,7 +93,7 @@ describe TurkishId, vcr: true do
   it "checks government registry for numerically valid unregistered id number" do
     identity_number = TurkishId.new(99_997_183_780)
     expect(identity_number.valid?).to eq(true)
-    expect(identity_number.registered?("RaveBase", "Phase 9", 1997)).to eq(false)
+    expect(identity_number.not_in_registry?("RaveBase", "Phase 9", 1997)).to eq(true)
   end
 
   it "does not query government registry for invalid id number" do

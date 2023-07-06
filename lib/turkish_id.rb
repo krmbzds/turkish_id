@@ -24,6 +24,10 @@ class TurkishId
     valid? && query_government_registry(given_name, surname, year_of_birth)
   end
 
+  def not_in_registry?(given_name, surname, year_of_birth)
+    !valid? || !query_government_registry(given_name, surname, year_of_birth)
+  end
+
   private
 
   def calculate_checksum(id_array)
