@@ -56,6 +56,8 @@ Use ```registered?``` method to query the government registry:
 identity_number.registered?("Ahmet", "Yılmaz", 1987)  #=> false
 ```
 
+There is also a convenience method called `not_in_registry?` which is the logical equivalent of `!registered?`.
+
 ### Generating Relatives
 
 You can generate ID numbers for your younger or elder relatives.
