@@ -21,32 +21,32 @@ jobs:
         ruby: ["2.7.8", "3.0.6", "3.1.4", "3.2.2"]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
       - name: StandardRB
-        continue-on-error: ${{ matrix.experimental }}
         run: bundle exec standardrb --parallel --format progress
 
   test:
     needs: [lint]
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     name: test ${{ matrix.ruby }}
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["2.7.8", "3.0.6", "3.1.4", "3.2.2"]
+        os: ["ubuntu-20.04", "ubuntu-22.04", "macos-11", "macos-12", "macos-13"]
+        ruby: ["2.7.8", "3.0.6", "3.1.4", "3.2.2", "ruby-head"]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+          rubygems: latest
           bundler-cache: true
-
       - name: Test
-        continue-on-error: ${{ matrix.experimental }}
+        continue-on-error: ${{ endsWith(matrix.ruby, 'head') }}
         run: bundle exec rake
