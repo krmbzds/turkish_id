@@ -135,4 +135,87 @@ describe TurkishId, vcr: true do
     expect(identity_number.registered?("Ayşe", nil, 2000)).to eq(false)
     assert_not_requested(stub_any)
   end
+
+  it "queries foreigner registry for valid id number and returns true" do
+    identity_number = TurkishId.new("99911494534")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("Yukihiro Matz", "Matsumoto", 14, 4, 1965)).to eq(true)
+  end
+
+  it "queries foreigner registry for numerically valid but unregistered id number and returns false" do
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_not_in_registry?("Jane", "Doe", 1, 1, 1985)).to eq(true)
+  end
+
+  it "does not query foreigner registry for invalid id number" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("10000000000")
+    expect(identity_number.valid?).to eq(false)
+    expect(identity_number.foreigner_registered?("Invalid", "Person", 1, 1, 1989)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query foreigner registry for invalid day of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("John", "Doe", 32, 1, 1966)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query foreigner registry for invalid month of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("John", "Doe", 1, 13, 1983)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query foreigner registry for invalid year of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("John", "Doe", 1, 1, "2nd Millennium")).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query foreigner registry for nil given name" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?(nil, "Doe", 1, 1, 1980)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query foreigner registry for nil surname" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("John", nil, 1, 1, 1980)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+  it "does not query foreigner registry for nil day of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("John", "Doe", nil, 1, 1954)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query foreigner registry for nil month of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("John", "Doe", 1, nil, 1966)).to eq(false)
+    assert_not_requested(stub_any)
+  end
+
+  it "does not query foreigner registry for nil year of birth" do
+    stub_any = stub_request(:any, "tckimlik.nvi.gov.tr")
+    identity_number = TurkishId.new("99854496442")
+    expect(identity_number.valid?).to eq(true)
+    expect(identity_number.foreigner_registered?("John", "Doe", 1, 1, nil)).to eq(false)
+    assert_not_requested(stub_any)
+  end
 end

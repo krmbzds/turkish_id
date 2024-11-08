@@ -28,6 +28,14 @@ class TurkishId
     !valid? || !query_government_registry(given_name, surname, year_of_birth)
   end
 
+  def foreigner_registered?(given_name, surname, year_of_birth, month_of_birth, day_of_birth)
+    valid? && query_foreigner_registry(given_name, surname, year_of_birth, month_of_birth, day_of_birth)
+  end
+
+  def foreigner_not_in_registry?(given_name, surname, day_of_birth, month_of_birth, year_of_birth)
+    !valid? || !query_foreigner_registry(given_name, surname, day_of_birth, month_of_birth, year_of_birth)
+  end
+
   private
 
   def calculate_checksum(id_array)
@@ -96,6 +104,25 @@ class TurkishId
     })
 
     response.body.dig(:tc_kimlik_no_dogrula_response, :tc_kimlik_no_dogrula_result).is_a?(TrueClass)
+  rescue TypeError, ArgumentError, NoMethodError
+    false
+  end
+
+  def query_foreigner_registry(given_name, surname, day_of_birth, month_of_birth, year_of_birth)
+    return false unless Integer(day_of_birth).between?(1, 31)
+    return false unless Integer(month_of_birth).between?(1, 12)
+
+    client = Savon.client(wsdl: "https://tckimlik.nvi.gov.tr/Service/KPSPublicYabanciDogrula.asmx?WSDL")
+    response = client.call(:yabanci_kimlik_no_dogrula, message: {
+      "KimlikNo" => join_num(@id_number),
+      "Ad" => given_name.upcase(:turkic),
+      "Soyad" => surname.upcase(:turkic),
+      "DogumGun" => String(Integer(day_of_birth)),
+      "DogumAy" => String(Integer(month_of_birth)),
+      "DogumYil" => String(Date.new(Integer(year_of_birth)).year)
+    })
+
+    response.body.dig(:yabanci_kimlik_no_dogrula_response, :yabanci_kimlik_no_dogrula_result).is_a?(TrueClass)
   rescue TypeError, ArgumentError, NoMethodError
     false
   end

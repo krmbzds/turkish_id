@@ -58,6 +58,14 @@ identity_number.registered?("Ahmet", "Yılmaz", 1987)  #=> false
 
 There is also a convenience method called `not_in_registry?` which is the logical equivalent of `!registered?`.
 
+Use ```foreigner_registered?``` method to query the foreigner registry:
+
+```rb
+identity_number.foreigner_registered?("Yukihiro", "Matsumoto", 14, 4, 1965)  #=> false
+```
+
+There is also a convenience method called `foreigner_not_in_registry?` which is the logical equivalent of `!foreigner_registered?`.
+
 ### Generating Relatives
 
 You can generate ID numbers for your younger or elder relatives.
@@ -177,7 +185,7 @@ Yes.
 
 ## License
 
-Copyright © 2015-2023 [Kerem Bozdas][Personal Webpage]
+Copyright © 2015-2024 [Kerem Bozdas][Personal Webpage]
 
 This gem is available under the terms of the [MIT License][License].
 
