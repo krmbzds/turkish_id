@@ -148,10 +148,10 @@ Remember that a valid identification number does not imply the existence of an I
 
 This gem is used in production and tested against the following Ruby versions:
 
-- ✅ `3.2.2` (stable)
-- ✅ `3.1.4` (stable)
-- ⏳ `3.0.6` (security maintenance)
-- 🪦 `2.7.8` (end of life)
+- ✅ `3.3.5` (stable)
+- ✅ `3.2.6` (stable)
+- ⏳ `3.1.6` (security maintenance)
+- 🪦 `3.0.7` (end of life)
 
 ## Development
 
