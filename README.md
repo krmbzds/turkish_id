@@ -156,8 +156,8 @@ Remember that a valid identification number does not imply the existence of an I
 
 This gem is used in production and tested against the following Ruby versions:
 
-- ✅ `3.3.5` (stable)
-- ✅ `3.2.6` (stable)
+- ✅ `3.4.1` (stable)
+- ✅ `3.3.6` (stable)
 - ⏳ `3.1.6` (security maintenance)
 - 🪦 `3.0.7` (end of life)
 
@@ -185,7 +185,7 @@ Yes.
 
 ## License
 
-Copyright © 2015-2024 [Kerem Bozdas][Personal Webpage]
+Copyright © 2015-2025 [Kerem Bozdas][Personal Webpage]
 
 This gem is available under the terms of the [MIT License][License].
 
