@@ -158,6 +158,7 @@ This gem is used in production and tested against the following Ruby versions:
 
 - ✅ `3.4.1` (stable)
 - ✅ `3.3.6` (stable)
+- ✅ `3.2.6` (stable)
 - ⏳ `3.1.6` (security maintenance)
 - 🪦 `3.0.7` (end of life)
 
